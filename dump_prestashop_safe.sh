@@ -49,6 +49,10 @@ echo "Adding admin user"
 ADMIN_PASSWORD_HASH=$(php -r "echo password_hash('${USERPASSWORD}', PASSWORD_DEFAULT);")
 
 cat <<EOF >> "$DUMP_FILE"
+cat <<EOF >> "$DUMP_FILE"
+
+-- Dump employee table
+DELETE FROM ps_employee;
 
 -- Adding admin user
 INSERT INTO ps_employee (id_profile, id_lang, lastname, firstname, email, passwd, active, id_shop)
